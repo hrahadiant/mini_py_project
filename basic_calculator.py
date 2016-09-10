@@ -1,10 +1,13 @@
-# basic of simple calculator
+# basic of simple calculator app
 # you only calculate between two numbers
+# the operation list are : +, -, *, /, and %
+# the ">" for adding a new number
 
+# set the global variable for store the current total
 subtotal = 0
 total = 0
 
-
+# error handling for input
 def error_handling(int_type, float_type1, float_type2):
     # check if type of input is correct
     try:
@@ -15,14 +18,14 @@ def error_handling(int_type, float_type1, float_type2):
         print("You enter characters or symbols or selected the wrong operation.\nPlease try again.")
         main()
 
-
+# exit the program and then get the total calculation
 def break_the_code():
     global subtotal, total
     total = subtotal
     print("Total calculation is {}.\nThanks for using this calculator.".format(total))
     exit()
 
-
+# list of operation that you can used
 def operation_list():
     print("Enter the two numbers first and then select the operation.")
     print("1. add")
