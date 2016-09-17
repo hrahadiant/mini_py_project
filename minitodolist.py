@@ -1,7 +1,38 @@
 import os
+
+# initialize a list
 task = []
+# check current python file path
+currentpath = os.path.dirname(os.path.realpath(__file__))
+# set name of the file
+filename = "my_todo.txt"
+# set directory to save the file
+filepath = os.path.join(currentpath, filename)
 
 
+# function for check the file is exist and is empty or not
+def open_list():
+	if os.path.isfile(filepath) == True:
+		file = open(filepath, 'r')
+		if os.stat(filepath).st_size > 0:
+			print("Here's your current todo in your file.")
+			with file as f:
+				for line in f:
+					print(line)
+		else:
+			print("Your current todo is empty.")
+	else:
+		file = open(filepath, 'w+')
+		print("File is successfully created on {}.".format(dir_path))
+	file.close()
+	save_message()
+
+
+def save_message():
+	print("Save another list..")
+
+
+# function for clear the screen
 def clear():
 	if os.system == "cls":
 		os.system('cls')
@@ -9,15 +40,14 @@ def clear():
 		os.system('clear')
 
 
+# function for show current todo
 def show_task():
 	if len(task) == 0:
 		print("Your current list is empty.")
 	else:	
-		num = 1
 		print("Here's your current list.")
 		for listing in task:
-			print("{}: {}".format(num, listing))
-			num += 1
+			print("- {}".format(listing))
 
 
 def close():
@@ -36,6 +66,7 @@ def show_help():
 	print("type show, to show your current list.")
 	print("type help, to see this message.")
 	print("type remove, to remove your selected list.")
+	print("type save, to save current list into file.")
 	print("type quit or q, to close the apps")
 
 
@@ -46,6 +77,8 @@ def welcome_msg():
 		exit()
 	elif notif.lower() == "help":
 		show_help()
+	else:
+		open_list()
 
 welcome_msg()
 
@@ -77,5 +110,7 @@ while True:
 			print("{} has been removed from current list.".format(task[idx]))
 			del task[idx]
 			continue
+	elif todo == "save":
+		pass
 	else:
 		task.append(todo)
