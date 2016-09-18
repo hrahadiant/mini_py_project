@@ -23,7 +23,7 @@ def open_list():
 			print("Your current todo is empty.")
 	else:
 		file = open(filepath, 'w+')
-		print("File is successfully created on {}.".format(dir_path))
+		print("File is successfully created on {}.".format(currentpath))
 	file.close()
 	save_message()
 
